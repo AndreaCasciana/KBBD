@@ -1,0 +1,66 @@
+<html>
+<head>
+    <meta http-equiv="content-language" content="id">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,800" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="index.php">KBBD</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#kbbdnavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="kbbdnavbar">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="login.html">Log in</a>
+                </li>
+            </ul>
+            <form class="d-flex" onsubmit="search(event)" action="">
+                <input class="form-control me-2" type="text" placeholder="tiruh" id="cari">
+                <button class="btn btn-primary" type="submit">Cari</button>
+            </form>
+        </div>
+    </div>
+</nav>
+<div id="background">
+    <div id="about" class="container rounded-3 shadow">
+        <br>
+        <h2>Tentang KBBD daring ini</h2>
+        <p>Aplikasi Kamus Besar Bahasa Dayak (KBBD) ini merupakan KBBD Daring (Dalam Jaringan / <i>Online</i> tidak resmi) yang dibuat untuk memudahkan pencarian, penggunaan dan pembacaan arti kata (lema/sub lema). Berbeda dengan beberapa situs web (<i>website</i>) sejenis, kami berusaha memberikan berbagai fitur lebih, seperti kecepatan akses, tampilan yang pas untuk segala perambah web baik komputer desktop, laptop maupun telepon pintar dan sebagainya.</p>
+        <h2>Fitur KBBD Daring</h2>
+        <ul>
+            <li>Pencarian kata dalam bahasa Dayak atau dalam bahasa Indonesia</li>
+            <li>Tampilan yang sederhana dan ringan untuk kemudahan penggunaan</li>
+            <li>Proses pengambilan data yang sangat cepat, pengguna tidak perlu memuat ulang (<i>reload/refresh</i>) jendela atau laman web (<i>website</i>) untuk mencari kata berikutnya</li>
+            <li>Menampilkan hasil baik yang ada di dalam kata dasar maupun turunan, dan arti atau definisi akan ditampilkan tanpa harus mengunduh ulang data dari server</li>
+            <li>Pranala (<i>Pretty Permalink/Link</i>) yang indah dan mudah diingat untuk definisi kata, misalnya :
+                <ul>
+                    <li>Kata 'mahining' akan mempunyai pranala (<i>link</i>) di https://scascian2.alwaysdata.net/index.php?search=Mahining</li>
+                    <li>Kata 'tiruh' akan mempunyai pranala (<i>link</i>) di https://scascian2.alwaysdata.net/index.php?search=Tiruh</li>
+                    <li>Kata 'kuman' akan mempunyai pranala (<i>link</i>) di https://scascian2.alwaysdata.net/index.php?search=Kuman</li>
+                    <li>dan seterusnya</li>
+                </ul>
+                Sehingga diharapkan pranala (<i>link</i>) tersebut dapat digunakan sebagai referensi dalam penulisan, baik di dalam jaringan maupun di luar jaringan.
+            </li>
+            <li>Aplikasi dikembangkan dengan konsep <i>Responsive Design</i>, artinya tampilan situs web (<i>website</i>) KBBD ini akan cocok di berbagai media, misalnya smartphone ( Tablet pc, iPad, iPhone, Tab), termasuk komputer dan netbook/laptop. Tampilan web akan menyesuaikan dengan ukuran layar yang digunakan.</li>
+        </ul>
+        <p></p>
+    </div>
+
+    <script type="text/javascript">
+        function search(e){
+            e.preventDefault();
+            window.location = "https://scascian2.alwaysdata.net/index.php?search=" + document.getElementById("cari").value;
+        }
+    </script>
+</div>
+</body>
+</html>
