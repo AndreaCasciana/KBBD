@@ -1,4 +1,5 @@
 <?php
+//if the user is not logged in, it redirects to the login page
 session_start();
 if(!isset($_SESSION['username']))
     header("Location: ../login.html");
@@ -92,6 +93,7 @@ if(!isset($_SESSION['username']))
             if(isset($_POST['editWord']))
                 editWord($_POST['id']);
 
+            //if there is a GET request with the 'word' parameter, then it adds a word into the database with the specified parameters
             if(!empty( $_GET) && isset($_GET['word'])) {
                 $word = $_GET['word'];
                 $spelling = $_GET['spelling'];
@@ -99,6 +101,7 @@ if(!isset($_SESSION['username']))
                 $definition = $_GET['definition'];
                 $example = $_GET['example'];
                 $id = 0;
+                //it adds the word only if all parameters are not empty
                 if ($word != '' && $spelling != '' && $type != '' && $definition != '' && $example != '') {
                     $sql = "SELECT MAX(ID) AS id FROM KBBD";
                     $result = executeQuery($sql);
@@ -109,14 +112,17 @@ if(!isset($_SESSION['username']))
                     }
 
                 }
+                //the ID of the new word will be the old ID + 1
                 $id += 1;
                 $type = strstr($type, ' ', true);
+                //adds the word into the database
                 $sql = "INSERT INTO KBBD VALUES ('" . $id . "','" . $word . "','" . $spelling . "','" . $type . "','" . $definition . "','" . $example . "' )";
                 $result = executeQuery($sql);
                 echo "<script type='text/javascript'>alert('Kata berhasil ditambahkan ke database!')</script>";
                 echo "<script>window.location.href='adminArea.php'</script>";
             }
 
+            //searches a word in the database and displays a table with the results
             function searchWordInDB(){
                 $word = $_POST['search'];
                 if($word!='') {
@@ -175,7 +181,7 @@ if(!isset($_SESSION['username']))
                         echo"                </tbody>
                                                   </table>
                                  ";
-                    } else {
+                    } else { //displays an empty table if there are no results
                         echo "
                     <table class='table'>
                 <thead>
@@ -228,18 +234,19 @@ if(!isset($_SESSION['username']))
                 }
             }
 
+            //deletes the specified $ID word from the database
             function deleteWord($ID){
                 $sql = "DELETE FROM KBBD WHERE ID =  '" . $ID . "'";
                 executeQuery($sql);
                 echo "<script type='text/javascript'>alert('Kata berhasil dihapus dari database!')</script>";
             }
 
+            //updates the specified $ID word in the database
             function editWord($ID){
                 $sql = "UPDATE KBBD SET  Word = '" . $_POST['word'] . "', Spelling = '" .$_POST['spelling'] ."', Type = '" . $_POST['type'] . "', Definition =  '" . $_POST['definition'] . "', Example = '" . $_POST['example'] . "' WHERE ID =  '" . $ID . "'";
                 executeQuery($sql);
                 echo "<script type='text/javascript'>alert('Kata berhasil diedit di database!')</script>";
             }
-
 
             ?>
         </div>

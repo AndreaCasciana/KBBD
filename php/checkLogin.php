@@ -7,6 +7,8 @@ $password = stripslashes($password);
 
 $sql = "SELECT  * FROM Accounts WHERE username =  '" . $username . "'";
 $result = executeQuery($sql);
+//if an account with a username which equals to $username is found
+//then it proceeds to verify if the password is correct
 if ($result->num_rows > 0){
     $row = $result->fetch_assoc();
 
@@ -19,5 +21,6 @@ if ($result->num_rows > 0){
         header("Location: ../login.html#err");
 }else
     header("Location: ../login.html#err");
-
+//if either username or password is incorrect, then it redirects to the login page
+//calling the function which informs the user that the credentials are incorrect
 ?>

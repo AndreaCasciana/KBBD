@@ -36,6 +36,7 @@
 </nav>
 <div id="background">
     <?php
+    //function for displaying the search box on the home page
     function displaySearch(){
         echo "
 <div class=\"s006\">
@@ -78,6 +79,8 @@
     if(isset($_GET['search'])) {
         $search = $_GET['search'];
         if($search!='') {
+            //if there is a GET request with a parameter 'search' not empty
+            //then the word specified in the parameter will be searched in the database
             echo "<div id='definition' class='container rounded-3 shadow'>";
             $sql = "SELECT * FROM KBBD WHERE Word LIKE  '%" . $search . "%' OR Definition LIKE '%" .$search. "%'";
             $result = executeQuery($sql);
@@ -96,9 +99,11 @@
                 $i = 0;
                 while ($row = $result->fetch_assoc()) {
                     $contoh = explode(", ",  $row["Example"]);
+                    //separates the examples in indonesian and dayak
                     $contohDayak = $contoh[0];
                     $contohIndo = $contoh[1];
-                    if($i==1)
+
+                    if($i==1) //if more than a result is found
                         echo "<button  id='showMore' class='btn btn-dark mb-2' data-bs-toggle='collapse' data-bs-target='#moreResults'>Tampilkan lainnya</button><div id='moreResults' class='collapse'>";
                     echo "<h1>" . $row["Word"] . "</h1>
                         <p> /" . $row["Spelling"] . "/ " . $row["Type"] . "  - arti:  " . $row["Definition"] . "</p>
@@ -107,14 +112,14 @@
 
                     $i++;
                 }
-                if($i>1)
+                if($i>1) //if more than a result is found
                     echo "</div>";
 
                 echo "</div>";
                 echo "<div class='col'>";
                 echo    "<img src='images/dayakbird.png' width='250' height='500'>";
                 echo "</div></div></div></div>";
-            } else {
+            } else { //if the word is not present in the database
                 echo "<div class='col'>";
                 echo "<h1>Kata \"$search\" belum ada di KBBD database. </h1>";
                 echo "</div>";
