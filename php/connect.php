@@ -1,5 +1,5 @@
 <?php
-$conn = ["mysql-scascian2.alwaysdata.net","scascian2", "passwordKBBD@", "scascian2_kbbd"];
+$conn = ["mysql-scascian2.alwaysdata.net","scascian2", "######", "scascian2_kbbd"];
 //server name, username, password and DB name
 
 function executeQuery($sql){
